@@ -1,0 +1,30 @@
+{
+  "name": "eat-the-burger",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "express-handlebars": "^2.0.1",
+    "express-handler": "^0.2.0",
+    "method-override": "^2.3.5",
+    "mysql": "^2.10.2"
+  },
+  "devDependencies": {
+    "handlebars-helper-css": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrMendonez/eat-the-burger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MrMendonez/eat-the-burger/issues"
+  },
+  "homepage": "https://github.com/MrMendonez/eat-the-burger#readme",
+  "description": ""
+}
