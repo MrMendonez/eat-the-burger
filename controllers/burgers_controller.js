@@ -1,18 +1,18 @@
 var express = require('express');
 var router = express.Router();
-var super_clubs = require('../models/super_clubs.js');
+var burger = require('../models/burger.js');
 
 
 //get route -> index
 router.get('/index', function(req,res) {
-	super_clubs.findAllMembers(function(super_clubs_data){
-		res.render('index', {super_clubs_data});
+	burger.findAllMembers(function(burger_data){
+		res.render('index', {burger_data});
 	});
 });
 
 //post route -> back to index
 router.post('/create', function(req, res) {
-	super_clubs.addOneMemeber(req.body.member_name, function(result){
+	burger.addOneMemeber(req.body. burger_name, function(result){
 		console.log(result);
 		res.redirect('/index');
 	});
@@ -20,7 +20,7 @@ router.post('/create', function(req, res) {
 
 //put route -> back to index
 router.put('/update', function(req,res){
-	super_clubs.updateOneMember(req.body.member_id, function(result){
+	burger.updateOneMember(req.body.id, function(result){
 		console.log(result);
 		res.redirect('/index');
 	});
@@ -28,7 +28,7 @@ router.put('/update', function(req,res){
 
 //delete route -> back to index
 router.delete('/delete', function(req,res){
-	super_clubs.removeOneMember(req.body.member_id, function(result){
+	burger.removeOneMember(req.body.id, function(result){
 		console.log(result);
 		res.redirect('/index');
 	});
