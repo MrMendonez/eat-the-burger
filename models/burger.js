@@ -1,20 +1,17 @@
-var orm = require('../config/orm.js');
+var orm = require("../config/orm.js");
 
-var burger = {
-	findAllMembers: function(cb) {
-		orm.selectAll('burgers', function(res){
-			cb(res)
-		});
-	},
-	addOneMemeber: function(nameInput,cb) {
-		orm.insertOne('burgers', nameInput, 1, cb);
-	},
-	updateOneMember: function(inputId, cb){
-		orm.updateOne('burgers', 1, inputId, cb);
-	},
-	removeOneMember: function(inputId, cb) {
-		orm.deleteOne('burgers', 1, inputId, cb);
-	}
+var burgers = {
+  addBurger: function(nameInput, cb){
+    orm.insertOne("burgers", nameInput, cb);
+  },
+  devourBurger: function(inputId, cb){
+    orm.updateOne("burgers", inputId, cb);
+  },
+  findAll: function(cb) {
+    orm.selectAll("burgers", function(res){
+      cb(res);
+    });
+  }
 };
-    
-module.exports = burger;
+
+module.exports = burgers;

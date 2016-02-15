@@ -1,34 +1,27 @@
-var connection = require('../config/connection.js');
+var connectionImport = require("./connection.js");
+var mysql = require("mysql");
 
-var orm = {
-    selectAll: function(tableInput, cb) {
-        var s = 'SELECT * FROM ' + tableInput + ';';
-        connection.query(s, function(err, result) {
-            if (err) throw err;
-            cb(result);
-        });
-    },
-    insertOne: function(tableInput, nameInput, activeInput, cb) {	
-    	var s = 'INSERT INTO ' + tableInput + ' (name, active, visit_count) VALUES (?, ?, ?)';
-	  	connection.query(s, [nameInput, activeInput, 0], function(err, result) {
-			if (err) throw err;
-			cb(result);
-		});
-    },
-    updateOne: function(tableInput, colInput, idInput, cb) {
-    	var s = 'UPDATE ' + tableInput + ' SET visit_count = visit_count + 1  WHERE id = ?';
-     	connection.query(s, [idInput], function(err, result) {
-			if (err) throw err;
-			cb(result);
-		});
-    },
-    deleteOne: function(tableInput, colInput, idInput, cb) {
-        var s = 'DELETE FROM '+tableInput+' WHERE ID = ?';
-        connection.query(s, [idInput], function(err, result) {
-            if (err) throw err;
-            cb(result);
-        });
-    },
-};
-    
-module.exports = orm;
+
+module.exports = {
+  insertOne: function(tableInput, nameInput, cb) { 
+    var query = "INSERT INTO " + tableInput + " (burger_name) VALUES (?)";
+    connection.query(query, [nameInput], function(err, result) {
+      if (err) throw err;
+      cb(result);
+    });
+  },
+  updateOne: function(tableInput, idInput, cb) {
+    var query = "UPDATE " + tableInput + " SET devoured = 1  WHERE id = ?";
+    connection.query(query, [idInput], function(err, result) {
+      if (err) throw err;
+      cb(result);
+    });
+  },
+  selectAll: function(tableInput, cb) {
+    var query = 'SELECT * FROM ' + tableInput + ';';
+    connection.query(query, function(err, result) {
+      if (err) throw err;
+      cb(result);
+    });
+  }
+}
